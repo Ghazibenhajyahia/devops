@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Pulling ... ';
                 git branch: 'main',
-                url : 'https://github.com/Ghazibenhajyahia/SpringAOP.git'
+                url : 'https://github.com/Ghazibenhajyahia/devops.git'
             }
         }
         
