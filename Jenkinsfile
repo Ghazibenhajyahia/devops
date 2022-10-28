@@ -6,7 +6,7 @@ pipeline{
 
         stage('Cloning from GitHub') {
                 steps {
-                    git branch: 'main', url: 'https://github.com/KlaiGhassen/devops'
+                    git branch: 'main', url: 'https://github.com/Ghazibenhajyahia/devops.git'
                 }
                 
             }
