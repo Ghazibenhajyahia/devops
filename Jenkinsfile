@@ -33,7 +33,11 @@ pipeline{
 
          stage('SonarQube Analysis'){
                 steps {
-                    sh 'mvn sonar:sonar -DskipTests \ -Dsonar.language=java \'
+                    sh """mvn sonar:sonar -DskipTests \
+                            -Dsonar.language=java \
+                          
+                            
+                    """
                 }
                 
             }
