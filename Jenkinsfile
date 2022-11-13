@@ -64,6 +64,7 @@ pipeline{
                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u ghazidev -p Docker.Hub.147'
                 }
         }
+        
         stage("Push to DockerHub") {
                 steps{
                     sh 'docker push ghazidev/achat'
@@ -76,18 +77,6 @@ pipeline{
                 }
         }
     }
-    
-    post {
-                success {
-                   echo 'succes'
-                }
-failure {
-                  echo 'failed'   
-                }
-             
-       
-    }
       
-
     }
 
