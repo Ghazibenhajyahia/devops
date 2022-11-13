@@ -10,48 +10,36 @@ pipeline{
                 }
                 
             }
-      
-      stage('Clean Maven'){
-            steps {
-                sh 'mvn clean '
-            }
-            
-        }
-        stage('Compile Project'){
-            steps {
-                sh 'mvn compile  -DskipTests'
-            }
-            
-        }
-        
-        
-        /* stage('UNIT test'){
-            steps{
-                sh 'mvn test'
-            }
-        }*/
+        stage('MVN COMPILE') {
+                  steps {
+                     sh 'mvn compile'
+                 }
+              }
+                stage('mvn Test') {
+                  steps {
+                     sh 'mvn test'
+                  }
+              }
+                stage('mvn Verify') {
+                   steps {
+                     sh 'mvn verify'
+                }
+             }
 
          stage('SonarQube Analysis'){
                 steps {
-                    sh """mvn sonar:sonar -DskipTests \
-                            -Dsonar.language=java \
-                          
-                            
-                    """
+                    sh "mvn sonar:sonar \
+                           -Dsonar.projectKey=sonar \
+                           -Dsonar.host.url=http://192.168.33.10:9000 \
+                           -Dsonar.login=092bfe111b6a8e26f3dacd0d45543eb5bd1b8af3"
                 }
                 
             }
-        
-        
-        
-        
        stage('Nexus'){
             steps{
                 sh 'mvn deploy -DskipTests'
             }
         }
-        
-        
         stage("Building Docker Image") {
                 steps{
                     sh 'docker build -t ghazidev/achat .'
