@@ -1,0 +1,168 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ReglementRestController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.esprit.examen.controllers</a>
+</div>
+
+<h1>Coverage Summary for Class: ReglementRestController (com.esprit.examen.controllers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ReglementRestController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.esprit.examen.controllers;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import com.esprit.examen.entities.Facture;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.format.annotation.DateTimeFormat;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import com.esprit.examen.entities.Reglement;
+&nbsp;import com.esprit.examen.services.IReglementService;
+&nbsp;
+&nbsp;import io.swagger.annotations.Api;
+&nbsp;
+&nbsp;@RestController
+&nbsp;@Api(tags = &quot;Gestion des reglements&quot;)
+&nbsp;@RequestMapping(&quot;/reglement&quot;)
+&nbsp;@CrossOrigin(&quot;*&quot;)
+<b class="nc">&nbsp;public class ReglementRestController {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    IReglementService reglementService;
+&nbsp;
+&nbsp;
+&nbsp;    // http://localhost:8089/SpringMVC/reglement/add-reglement
+&nbsp;    @PostMapping(&quot;/add-reglement&quot;)
+&nbsp;    @ResponseBody
+&nbsp;    public Reglement addReglement(@RequestBody Reglement r) {
+<b class="nc">&nbsp;        Reglement reglement = reglementService.addReglement(r);</b>
+<b class="nc">&nbsp;        return reglement;</b>
+&nbsp;    }
+&nbsp;    @GetMapping(&quot;/retrieve-all-reglements&quot;)
+&nbsp;    @ResponseBody
+&nbsp;    public List&lt;Reglement&gt; getReglement() {
+<b class="nc">&nbsp;        List&lt;Reglement&gt; list = reglementService.retrieveAllReglements();</b>
+<b class="nc">&nbsp;        return list;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // http://localhost:8089/SpringMVC/reglement/retrieve-reglement/8
+&nbsp;    @GetMapping(&quot;/retrieve-reglement/{reglement-id}&quot;)
+&nbsp;    @ResponseBody
+&nbsp;    public Reglement retrieveReglement(@PathVariable(&quot;reglement-id&quot;) Long reglementId) {
+<b class="nc">&nbsp;        return reglementService.retrieveReglement(reglementId);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // http://localhost:8089/SpringMVC/reglement/retrieveReglementByFacture/8
+&nbsp;    @GetMapping(&quot;/retrieveReglementByFacture/{facture-id}&quot;)
+&nbsp;    @ResponseBody
+&nbsp;    public List&lt;Reglement&gt; retrieveReglementByFacture(@PathVariable(&quot;facture-id&quot;) Long factureId) {
+<b class="nc">&nbsp;        return reglementService.retrieveReglementByFacture(factureId);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // http://localhost:8089/SpringMVC/reglement/getChiffreAffaireEntreDeuxDate/{startDate}/{endDate}
+&nbsp;    @GetMapping(value = &quot;/getChiffreAffaireEntreDeuxDate/{startDate}/{endDate}&quot;)
+&nbsp;    public float getChiffreAffaireEntreDeuxDate(
+&nbsp;            @PathVariable(name = &quot;startDate&quot;) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
+&nbsp;            @PathVariable(name = &quot;endDate&quot;) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate) {
+&nbsp;        try {
+<b class="nc">&nbsp;            return reglementService.getChiffreAffaireEntreDeuxDate(startDate, endDate);</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            return 0;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-13 22:05</div>
+</div>
+</body>
+</html>

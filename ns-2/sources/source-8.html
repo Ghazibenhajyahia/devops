@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > StockRestController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.esprit.examen.controllers</a>
+</div>
+
+<h1>Coverage Summary for Class: StockRestController (com.esprit.examen.controllers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StockRestController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.esprit.examen.controllers;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import com.esprit.examen.entities.Stock;
+&nbsp;import com.esprit.examen.services.IStockService;
+&nbsp;
+&nbsp;import io.swagger.annotations.Api;
+&nbsp;
+&nbsp;@RestController
+&nbsp;@Api(tags = &quot;Gestion des stocks&quot;)
+&nbsp;@RequestMapping(&quot;/stock&quot;)
+&nbsp;@CrossOrigin(&quot;*&quot;)
+<b class="nc">&nbsp;public class StockRestController {</b>
+&nbsp;
+&nbsp;	@Autowired
+&nbsp;	IStockService stockService;
+&nbsp;
+&nbsp;	// http://localhost:8089/SpringMVC/stock/retrieve-all-stocks
+&nbsp;	@GetMapping(&quot;/retrieve-all-stocks&quot;)
+&nbsp;	@ResponseBody
+&nbsp;	public List&lt;Stock&gt; getStocks() {
+<b class="nc">&nbsp;		List&lt;Stock&gt; list = stockService.retrieveAllStocks();</b>
+<b class="nc">&nbsp;		return list;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	// http://localhost:8089/SpringMVC/stock/retrieve-stock/8
+&nbsp;	@GetMapping(&quot;/retrieve-stock/{stock-id}&quot;)
+&nbsp;	@ResponseBody
+&nbsp;	public Stock retrieveStock(@PathVariable(&quot;stock-id&quot;) Long stockId) {
+<b class="nc">&nbsp;		return stockService.retrieveStock(stockId);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	// http://localhost:8089/SpringMVC/stock/add-stock
+&nbsp;	@PostMapping(&quot;/add-stock&quot;)
+&nbsp;	@ResponseBody
+&nbsp;	public Stock addStock(@RequestBody Stock s) {
+<b class="nc">&nbsp;		Stock stock = stockService.addStock(s);</b>
+<b class="nc">&nbsp;		return stock;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	// http://localhost:8089/SpringMVC/stock/remove-stock/{stock-id}
+&nbsp;	@DeleteMapping(&quot;/remove-stock/{stock-id}&quot;)
+&nbsp;	@ResponseBody
+&nbsp;	public void removeStock(@PathVariable(&quot;stock-id&quot;) Long stockId) {
+<b class="nc">&nbsp;		stockService.deleteStock(stockId);</b>
+<b class="nc">&nbsp;	}</b>
+&nbsp;
+&nbsp;	// http://localhost:8089/SpringMVC/stock/modify-stock
+&nbsp;	@PutMapping(&quot;/modify-stock&quot;)
+&nbsp;	@ResponseBody
+&nbsp;	public Stock modifyStock(@RequestBody Stock stock) {
+<b class="nc">&nbsp;		return stockService.updateStock(stock);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	/*
+&nbsp;	 * Spring Scheduler : Comparer QteMin tolérée (à ne pa dépasser) avec
+&nbsp;	 * Quantité du stock et afficher sur console la liste des produits inférieur
+&nbsp;	 * au stock La fct schédulé doit obligatoirement etre sans paramètres et
+&nbsp;	 * sans retour (void)
+&nbsp;	 */
+&nbsp;	// http://localhost:8089/SpringMVC/stock/retrieveStatusStock
+&nbsp;	// @Scheduled(fixedRate = 60000)
+&nbsp;	// @Scheduled(fixedDelay = 60000)
+&nbsp;	//@Scheduled(cron = &quot;*/60 * * * * *&quot;)
+&nbsp;	//@GetMapping(&quot;/retrieveStatusStock&quot;)
+&nbsp;//	@ResponseBody
+&nbsp;//	public void retrieveStatusStock() {
+&nbsp;//		stockService.retrieveStatusStock();
+&nbsp;//	}
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-13 22:05</div>
+</div>
+</body>
+</html>

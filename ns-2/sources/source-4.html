@@ -1,0 +1,162 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > OperateurController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.esprit.examen.controllers</a>
+</div>
+
+<h1>Coverage Summary for Class: OperateurController (com.esprit.examen.controllers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">OperateurController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.esprit.examen.controllers;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;import com.esprit.examen.entities.Operateur;
+&nbsp;import com.esprit.examen.services.IOperateurService;
+&nbsp;
+&nbsp;import io.swagger.annotations.Api;
+&nbsp;
+&nbsp;@RestController
+&nbsp;@Api(tags = &quot;Gestion des opérateurs&quot;)
+&nbsp;@RequestMapping(&quot;/operateur&quot;)
+&nbsp;@CrossOrigin(&quot;*&quot;)
+<b class="nc">&nbsp;public class OperateurController {</b>
+&nbsp;
+&nbsp;	@Autowired
+&nbsp;	IOperateurService operateurService;
+&nbsp;	
+&nbsp;	// http://localhost:8089/SpringMVC/operateur/retrieve-all-operateurs
+&nbsp;	@GetMapping(&quot;/retrieve-all-operateurs&quot;)
+&nbsp;	@ResponseBody
+&nbsp;	public List&lt;Operateur&gt; getOperateurs() {
+<b class="nc">&nbsp;		List&lt;Operateur&gt; list = operateurService.retrieveAllOperateurs();</b>
+<b class="nc">&nbsp;		return list;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	// http://localhost:8089/SpringMVC/operateur/retrieve-operateur/8
+&nbsp;	@GetMapping(&quot;/retrieve-operateur/{operateur-id}&quot;)
+&nbsp;	@ResponseBody
+&nbsp;	public Operateur retrieveOperateur(@PathVariable(&quot;operateur-id&quot;) Long operateurId) {
+<b class="nc">&nbsp;		return operateurService.retrieveOperateur(operateurId);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	// http://localhost:8089/SpringMVC/operateur/add-operateur
+&nbsp;	@PostMapping(&quot;/add-operateur&quot;)
+&nbsp;	@ResponseBody
+&nbsp;	public Operateur addOperateur(@RequestBody Operateur op) {
+<b class="nc">&nbsp;		Operateur operateur = operateurService.addOperateur(op);</b>
+<b class="nc">&nbsp;		return operateur;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	// http://localhost:8089/SpringMVC/operateur/remove-operateur/{operateur-id}
+&nbsp;	@DeleteMapping(&quot;/remove-operateur/{operateur-id}&quot;)
+&nbsp;	@ResponseBody
+&nbsp;	public void removeOperateur(@PathVariable(&quot;operateur-id&quot;) Long operateurId) {
+<b class="nc">&nbsp;		operateurService.deleteOperateur(operateurId);</b>
+<b class="nc">&nbsp;	}</b>
+&nbsp;
+&nbsp;	// http://localhost:8089/SpringMVC/operateur/modify-operateur
+&nbsp;	@PutMapping(&quot;/modify-operateur&quot;)
+&nbsp;	@ResponseBody
+&nbsp;	public Operateur modifyOperateur(@RequestBody Operateur operateur) {
+<b class="nc">&nbsp;		return operateurService.updateOperateur(operateur);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-13 22:05</div>
+</div>
+</body>
+</html>

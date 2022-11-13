@@ -1,0 +1,170 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Stock</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.esprit.examen.entities</a>
+</div>
+
+<h1>Coverage Summary for Class: Stock (com.esprit.examen.entities)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Stock</td>
+<td class="coverageStat">
+  <span class="percent">
+    10%
+  </span>
+  <span class="absValue">
+    (1/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    7,1%
+  </span>
+  <span class="absValue">
+    (1/14)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Stock$HibernateProxy$FIMWkQhM</td>
+  </tr>
+  <tr>
+    <td class="name">Stock$StockBuilder</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    9,1%
+  </span>
+  <span class="absValue">
+    (1/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    6,7%
+  </span>
+  <span class="absValue">
+    (1/15)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.esprit.examen.entities;
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.util.Set;
+&nbsp;import javax.persistence.Entity;
+&nbsp;import javax.persistence.GeneratedValue;
+&nbsp;import javax.persistence.GenerationType;
+&nbsp;import javax.persistence.Id;
+&nbsp;import javax.persistence.OneToMany;
+&nbsp;import com.fasterxml.jackson.annotation.JsonIgnore;
+&nbsp;import lombok.*;
+&nbsp;
+&nbsp;@Entity
+&nbsp;@Getter
+<b class="nc">&nbsp;@Setter</b>
+<b class="nc">&nbsp;@AllArgsConstructor</b>
+<b class="fc">&nbsp;@NoArgsConstructor</b>
+<b class="nc">&nbsp;@Builder</b>
+&nbsp;public class Stock implements Serializable {
+&nbsp;	private static final long serialVersionUID = 1L;
+&nbsp;
+&nbsp;	@Id
+&nbsp;	@GeneratedValue(strategy = GenerationType.IDENTITY)
+<b class="nc">&nbsp;	private Long idStock;</b>
+<b class="nc">&nbsp;	private String libelleStock;</b>
+<b class="nc">&nbsp;	private Integer qte;</b>
+<b class="nc">&nbsp;	private Integer qteMin;</b>
+&nbsp;	@OneToMany(mappedBy = &quot;stock&quot;)
+&nbsp;	@JsonIgnore
+<b class="nc">&nbsp;	private Set&lt;Produit&gt; produits;</b>
+&nbsp;	public Stock(String libelleStock, Integer qte, Integer qteMin) {
+<b class="nc">&nbsp;		super();</b>
+<b class="nc">&nbsp;		this.libelleStock = libelleStock;</b>
+<b class="nc">&nbsp;		this.qte = qte;</b>
+<b class="nc">&nbsp;		this.qteMin = qteMin;</b>
+<b class="nc">&nbsp;	}</b>
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-13 22:05</div>
+</div>
+</body>
+</html>
