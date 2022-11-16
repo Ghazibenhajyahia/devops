@@ -26,25 +26,25 @@ pipeline{
                 }
              }
 
-//          stage('SonarQube Analysis'){
-//                 steps {
-//                     sh "mvn sonar:sonar \
-//                            -Dsonar.projectKey=sonar \
-//                            -Dsonar.host.url=http://192.168.33.10:9000 \
-//                            -Dsonar.login=092bfe111b6a8e26f3dacd0d45543eb5bd1b8af3"
-//                 }
+         stage('SonarQube Analysis'){
+                steps {
+                    sh "mvn sonar:sonar \
+                           -Dsonar.projectKey=sonar \
+                           -Dsonar.host.url=http://192.168.33.10:9000 \
+                           -Dsonar.login=092bfe111b6a8e26f3dacd0d45543eb5bd1b8af3"
+                }
                 
-//             }
+            }
                 stage('mvn clean package') {
                                steps {
                                  sh 'mvn clean package'
                             }
                          }
-//        stage('Nexus'){
-//             steps{
-//                 sh 'mvn deploy -DskipTests'
-//             }
-//         }
+       stage('Nexus'){
+            steps{
+                sh 'mvn deploy -DskipTests'
+            }
+        }
         stage("Building Docker Image") {
                 steps{
                     sh 'docker build -t ghazidev/achat .'
