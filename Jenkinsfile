@@ -51,18 +51,18 @@ pipeline{
                 }
         }
      
-//          stage("Login to DockerHub") {
-//                 steps{
-//                    // sh 'sudo chmod 666 /var/run/docker.sock'
-//                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u ghazidev -p Docker.Hub.147'
-//                 }
-//         }
+         stage("Login to DockerHub") {
+                steps{
+                   // sh 'sudo chmod 666 /var/run/docker.sock'
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u ghazidev -p Docker.Hub.147'
+                }
+        }
         
-//         stage("Push to DockerHub") {
-//                 steps{
-//                     sh 'docker push ghazidev/achat'
-//                 }
-//         }
+        stage("Push to DockerHub") {
+                steps{
+                    sh 'docker push ghazidev/achat'
+                }
+        }
     
                stage("Docker-compose") {
                 steps{
